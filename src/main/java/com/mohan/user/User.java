@@ -1,6 +1,9 @@
 package com.mohan.user;
 
 import com.mohan.user.balance.UserExpenseBalanceSheet;
+
+import java.util.Objects;
+
 /**
  * Represents a user in the system.
  * <p>
@@ -23,7 +26,7 @@ import com.mohan.user.balance.UserExpenseBalanceSheet;
  *     user.getUserExpenseBalanceSheet()
  * </pre>
  */
-public class User {
+public class User{
 
     /** Unique identifier for every user */
     private final String userId;
@@ -61,5 +64,18 @@ public class User {
 
     public UserExpenseBalanceSheet getUserExpenseBalanceSheet() {
         return userExpenseBalanceSheet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(userName, user.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, userName);
     }
 }
