@@ -34,36 +34,15 @@ public class Group {
         }
     }
 
+    public String getGroupId() {
+        return groupId;
+    }
 
+    public String getGroupName() {
+        return groupName;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public List<User> getGroupMembers() {
+        return groupMembers;
+    }
 }
