@@ -6,3 +6,5 @@ User, Group, Expense components, and controller to manage the different function
 - Add users to the Group
 - Create expenses within the group
 - Track the expenses and balances
+
+Adding this line to check the git related changes.
