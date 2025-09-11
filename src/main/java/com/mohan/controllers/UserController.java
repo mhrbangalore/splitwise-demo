@@ -26,8 +26,6 @@ public class UserController {
         for (User user : userList){
             if (user.getUserId().equals(id)){
                 return user;
-            } else {
-                System.out.println("There is no user with id: " + id);
             }
         }
         return null;

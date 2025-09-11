@@ -20,12 +20,12 @@ public class BalanceSheetController {
             User payee = split.getUser();
             if (payee.getUserId().equals(paidByUser.getUserId())){
                 payerBalanceSheet.setTotalExpenses(payerBalanceSheet.getTotalExpenses() + amountOwe);
-                payerBalanceSheet.setAmountGetBack(payerBalanceSheet.getAmountGetBack() + amountOwe);
             } else {
                 UserExpenseBalanceSheet payeeBalanceSheet = payee.getUserExpenseBalanceSheet();
                 Balance payerBalance = payerBalanceSheet.getUserVsBalance()
                         .computeIfAbsent(payee.getUserId(), k -> new Balance());
                 payerBalance.setAmountGetBack(payerBalance.getAmountGetBack() + amountOwe);
+                payerBalanceSheet.setAmountGetBack(payerBalanceSheet.getAmountGetBack() + amountOwe);
 
                 payeeBalanceSheet.setTotalExpenses(payerBalanceSheet.getTotalExpenses() + amountOwe);
                 payeeBalanceSheet.setAmountYouOwe(payeeBalanceSheet.getAmountYouOwe() + amountOwe);
@@ -47,8 +47,8 @@ public class BalanceSheetController {
         System.out.println("Total Amount You Owe: " + user.getUserExpenseBalanceSheet().getAmountYouOwe());
 
         for (Map.Entry<String, Balance> entry : user.getUserExpenseBalanceSheet().getUserVsBalance().entrySet()){
-            System.out.println("Expenses with user id: " + entry.getKey() + "Amount You Get Back: " + entry.getValue().getAmountGetBack()
-            + "Amount You Owe: " + entry.getValue().getAmountOwe());
+            System.out.println("Expenses with user id: " + entry.getKey() + "; Amount You Get Back: " + entry.getValue().getAmountGetBack()
+            + "; Amount You Owe: " + entry.getValue().getAmountOwe());
         }
 
         System.out.println("==================================================");

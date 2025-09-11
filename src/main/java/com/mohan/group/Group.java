@@ -2,6 +2,8 @@ package com.mohan.group;
 
 import com.mohan.controllers.ExpenseController;
 import com.mohan.expense.Expense;
+import com.mohan.expense.ExpenseSplitType;
+import com.mohan.split.Split;
 import com.mohan.user.User;
 
 import java.util.ArrayList;
@@ -44,5 +46,11 @@ public class Group {
 
     public List<User> getGroupMembers() {
         return groupMembers;
+    }
+
+    public Expense createExpense(String expenseId, String description, double expenseAmount, User paidByUser,
+                                 ExpenseSplitType expenseSplitType, List<Split> splits){
+        Expense expense = expenseController.createExpense(expenseId, description, expenseAmount, paidByUser, expenseSplitType, splits);
+        return expense;
     }
 }
