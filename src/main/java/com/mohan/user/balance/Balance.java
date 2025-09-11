@@ -4,27 +4,22 @@ import com.mohan.user.User;
 
 public class Balance {
 
-    private User amountOwedBy;
-    private double amountOwed;
+    private double amountOwe;
+    private double amountGetBack;
 
-    public Balance(User amountOwedBy, double amountOwed) {
-        this.amountOwedBy = amountOwedBy;
-        this.amountOwed = amountOwed;
+    public double getAmountOwe() {
+        return amountOwe;
     }
 
-    public User getAmountOwedBy() {
-        return amountOwedBy;
+    public void setAmountOwe(double amountOwe) {
+        this.amountOwe = amountOwe;
     }
 
-    public void setAmountOwedBy(User amountOwedBy) {
-        this.amountOwedBy = amountOwedBy;
+    public double getAmountGetBack() {
+        return amountGetBack;
     }
 
-    public double getAmountOwed() {
-        return amountOwed;
-    }
-
-    public void setAmountOwed(double amountOwed) {
-        this.amountOwed = amountOwed;
+    public void setAmountGetBack(double amountGetBack) {
+        this.amountGetBack = amountGetBack;
     }
 }
