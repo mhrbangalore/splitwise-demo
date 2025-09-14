@@ -53,6 +53,18 @@ public class Splitwise {
                         new Split(user3, 200),
                         new Split(user1, 200))
         );
+
+        group.createExpense(
+                "EXP002",
+                "Dinner",
+                1200,
+                user2,
+                ExpenseSplitType.EQUAL,
+                List.of(new Split(user2, 400),
+                        new Split(user3, 400),
+                        new Split(user1, 400))
+        );
+
         for (User user : userController.getAllUsers()){
             balanceSheetController.showBalanceSheetOfAUser(user);
         }
