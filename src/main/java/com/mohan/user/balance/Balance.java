@@ -6,6 +6,7 @@ public class Balance {
 
     private double amountOwe;
     private double amountGetBack;
+    private double effectiveBalance;
 
     public double getAmountOwe() {
         return amountOwe;
@@ -21,5 +22,13 @@ public class Balance {
 
     public void setAmountGetBack(double amountGetBack) {
         this.amountGetBack = amountGetBack;
+    }
+
+    public double getEffectiveBalance() {
+        return this.effectiveBalance;
+    }
+
+    public void setEffectiveBalance() {
+        this.effectiveBalance = this.amountGetBack - this.amountOwe;
     }
 }

@@ -26,12 +26,14 @@ public class BalanceSheetController {
                         .computeIfAbsent(payee.getUserId(), k -> new Balance());
                 payerBalance.setAmountGetBack(payerBalance.getAmountGetBack() + amountOwe);
                 payerBalanceSheet.setAmountGetBack(payerBalanceSheet.getAmountGetBack() + amountOwe);
+                payerBalance.setEffectiveBalance();
 
                 payeeBalanceSheet.setTotalExpenses(payerBalanceSheet.getTotalExpenses() + amountOwe);
                 payeeBalanceSheet.setAmountYouOwe(payeeBalanceSheet.getAmountYouOwe() + amountOwe);
                 Balance payeeBalance = payeeBalanceSheet.getUserVsBalance()
                         .computeIfAbsent(paidByUser.getUserId(), k -> new Balance());
                 payeeBalance.setAmountOwe(payeeBalance.getAmountOwe() + amountOwe);
+                payeeBalance.setEffectiveBalance();
             }
         }
 
@@ -48,10 +50,14 @@ public class BalanceSheetController {
 
         for (Map.Entry<String, Balance> entry : user.getUserExpenseBalanceSheet().getUserVsBalance().entrySet()){
             System.out.println("Expenses with user id: " + entry.getKey() + "; Amount You Get Back: " + entry.getValue().getAmountGetBack()
-            + "; Amount You Owe: " + entry.getValue().getAmountOwe());
+            + "; Amount You Owe: " + entry.getValue().getAmountOwe() + effectiveBalanceMessage(entry.getValue().getEffectiveBalance()));
         }
 
         System.out.println("==================================================");
+    }
+
+    private String effectiveBalanceMessage(double effectiveBalance){
+        return effectiveBalance >= 0 ? "; Owes You: " + effectiveBalance : "; You Owe: " + effectiveBalance * -1;
     }
 
 
