@@ -23,4 +23,28 @@ public class Expense {
         this.expenseSplitType = expenseSplitType;
         this.splits = splits;
     }
+
+    public String getExpenseId() {
+        return expenseId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getExpenseAmount() {
+        return expenseAmount;
+    }
+
+    public User getPaidByUser() {
+        return paidByUser;
+    }
+
+    public ExpenseSplitType getExpenseSplitType() {
+        return expenseSplitType;
+    }
+
+    public List<Split> getSplits() {
+        return splits;
+    }
 }

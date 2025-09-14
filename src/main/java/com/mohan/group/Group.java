@@ -48,9 +48,14 @@ public class Group {
         return groupMembers;
     }
 
+    public List<Expense> getGroupExpenses() {
+        return groupExpenses;
+    }
+
     public Expense createExpense(String expenseId, String description, double expenseAmount, User paidByUser,
                                  ExpenseSplitType expenseSplitType, List<Split> splits){
         Expense expense = expenseController.createExpense(expenseId, description, expenseAmount, paidByUser, expenseSplitType, splits);
+        groupExpenses.add(expense);
         return expense;
     }
 }

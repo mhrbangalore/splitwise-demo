@@ -1,5 +1,7 @@
 package com.mohan.controllers;
 
+import com.mohan.expense.Expense;
+import com.mohan.group.Group;
 import com.mohan.split.Split;
 import com.mohan.user.User;
 import com.mohan.user.balance.Balance;
@@ -54,6 +56,29 @@ public class BalanceSheetController {
         }
 
         System.out.println("==================================================");
+    }
+
+    public void showExpensesByGroup(String groupId, GroupController groupController){
+        Group group = groupController.getGroupById(groupId);
+        if (group == null){
+            System.out.println("There is no such group with this id: " + groupId);
+        } else {
+            System.out.println("==================================================");
+            System.out.println("Expenses of group: " + groupId);
+            System.out.println("==================================================");
+            for (Expense expense : group.getGroupExpenses()){
+                User paiByUser = expense.getPaidByUser();
+                System.out.println("Expense Description: " + expense.getDescription());
+                System.out.println("Total Expense amount: " + expense.getExpenseAmount());
+                System.out.println("Paid By: " + paiByUser.getUserId());
+                for (Split split : expense.getSplits()){
+                    if (split.getUser() != paiByUser) {
+                        System.out.println(split.getUser().getUserId() + " Owes " + paiByUser.getUserId() + ": " +split.getAmountOwe());
+                    }
+                }
+                System.out.println("==================================================");
+            }
+        }
     }
 
     private String effectiveBalanceMessage(double effectiveBalance){

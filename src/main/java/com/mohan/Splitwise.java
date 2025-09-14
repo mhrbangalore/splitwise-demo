@@ -64,10 +64,11 @@ public class Splitwise {
                         new Split(user3, 400),
                         new Split(user1, 400))
         );
-
-        for (User user : userController.getAllUsers()){
-            balanceSheetController.showBalanceSheetOfAUser(user);
-        }
+//
+//        for (User user : userController.getAllUsers()){
+//            balanceSheetController.showBalanceSheetOfAUser(user);
+//        }
+        balanceSheetController.showExpensesByGroup("G004", groupController);
 
     }
 
